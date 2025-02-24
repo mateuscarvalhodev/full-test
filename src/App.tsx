@@ -27,14 +27,14 @@ function App() {
             />
             <Button
               type='submit'
-              className='w-full xg text-white bg-#ec6724 font-bold py-2 px-4 rounded transition'
+              className='w-full xg text-white bg--primary-orange font-bold py-2 px-4 rounded transition'
             >
               Entrar
             </Button>
           </form>
         </div>
       </div>
-      <ClientCard name='mateus' priceEnterprise={200} priceSalary={100} />
+      <ClientCard name='mateus carvalho rodrigues' priceEnterprise={120000} priceSalary={3500} />
     </>
   )
 }
