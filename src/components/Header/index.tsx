@@ -41,7 +41,7 @@ export default function Header() {
         </a>
       </nav>
 
-      <div className='text-gray-700'>Olá Usuário</div>
+      <div className='text-gray-700'>Olá, <span className='font-bold'>Usuário!</span></div>
     </header>
   )
 }
