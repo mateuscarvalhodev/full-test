@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
-import ClientCard from '@/components/ui/ClientCard';
+import ClientCard from '@/components/ClientCard';
 import {
   Pagination,
   PaginationContent,

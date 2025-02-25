@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './App.css'
 import { Button } from './components/ui/button';
 import { Input } from './components/ui/input';
-import ClientCard from './components/ui/ClientCard';
+import ClientCard from './components/ClientCard';
 
 function App() {
   const [name, setName] = useState('');

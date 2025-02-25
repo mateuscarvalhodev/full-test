@@ -1,7 +1,7 @@
 import { TClientCards } from '@/types/TClientCard';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import { Pencil, Plus, Trash2 } from 'lucide-react';
-import { Button } from '../button';
+import { Button } from '../ui/button';
 
 export default function ClientCard({
   name,
