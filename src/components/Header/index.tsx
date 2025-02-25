@@ -1,5 +1,6 @@
 import teddyLogo from '@/assets/logo.svg'
 import { SidebarTrigger } from '../ui/sidebar';
+import { NavLink } from 'react-router';
 
 export default function Header() {
   console.log(SidebarTrigger);
@@ -21,18 +22,18 @@ export default function Header() {
       </div>
 
       <nav className='flex items-center gap-8'>
-        <a
-          href='#'
+        <NavLink
+          to='/clients'
           className='transition-colors'
         >
           Clientes
-        </a>
-        <a
-          href='#'
+        </NavLink>
+        <NavLink
+          to='/clientes-selecionados'
           className='transition-colors'
         >
           Clientes selecionados
-        </a>
+        </NavLink>
         <a
           href='#'
           className='transition-colors'

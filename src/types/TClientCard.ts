@@ -5,4 +5,6 @@ export type TClientCards = {
   onAdd?: () => void;
   onEdit?: () => void;
   onDelete?: () => void;
+  onRemove?: () => void;
+  variant?: 'default' | 'selected';
 }
