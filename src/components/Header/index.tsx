@@ -31,7 +31,7 @@ export default function Header() {
           href='#'
           className='transition-colors'
         >
-          Itens selecionados
+          Clientes selecionados
         </a>
         <a
           href='#'
