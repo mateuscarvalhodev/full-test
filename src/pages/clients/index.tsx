@@ -9,10 +9,11 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
-import { Button } from '@/components/ui/button';
+// import { Button } from '@/components/ui/button';
 import { getClients } from '@/api/getClients';
 import { TClientCards } from '@/types/TClientCard';
 import { deleteClient } from '@/api/deleteClients';
+import FormCreateClient from '@/components/FormCreateClient';
 
 export default function Clients() {
   const [clients, setClients] = useState<TClientCards[]>([]);
@@ -67,11 +68,12 @@ export default function Clients() {
             />
           ))
         )}
-        {!isLoading && clients.length > 0 && (
-          <Button className="col-span-full w-full border-2 border-amber-600 bg-white text-amber-600 cursor-pointer">
+
+        {/* <Button className="col-span-full w-full border-2 border-amber-600 bg-white text-amber-600 cursor-pointer">
             Adicionar Cliente
-          </Button>
-        )}
+          </Button> */}
+        <FormCreateClient />
+
       </main>
       {!isLoading && clients.length > 0 && (
         <Pagination>

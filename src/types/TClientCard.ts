@@ -8,4 +8,6 @@ export type TClientCards = {
   onDelete?: () => void;
   onRemove?: () => void;
   variant?: 'default' | 'selected';
-}
+};
+
+export type TNewClient = Omit<TClientCards, 'id'>;
