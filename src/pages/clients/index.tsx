@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import ClientCard from '@/components/ClientCard';
 import {
@@ -10,89 +10,82 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination';
 import { Button } from '@/components/ui/button';
-import { getClientes } from '@/api/getClients';
-
-const cardsData = [
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-  { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
-];
+import { getClients } from '@/api/getClients';
+import { TClientCards } from '@/types/TClientCard';
 
 export default function Clients() {
+  const [clients, setClients] = useState<TClientCards[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const itemsPerPage = 16;
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(cardsData.length / itemsPerPage);
 
-  const currentItems = cardsData.slice(
+  useEffect(() => {
+    getClients()
+      .then((data: TClientCards[]) => {
+        setClients(data);
+      })
+      .catch((error) => console.error('Erro ao buscar clientes:', error))
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  const totalPages = Math.ceil(clients.length / itemsPerPage);
+  const currentItems = clients.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
-  console.log(getClientes());
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
   return (
-    <>
-      <div className='bg-slate-50 h-screen'>
-        <Header />
-        <main className='w-screen mt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-16'>
-          {currentItems.map((item, index) => (
+    <div className="bg-slate-50 h-screen">
+      <Header />
+      <main className="w-screen mt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-16">
+        {isLoading ? (
+          <p>Carregando...</p>
+        ) : clients.length === 0 ? (
+          <p>Nenhum cliente encontrado.</p>
+        ) : (
+          currentItems.map((item) => (
             <ClientCard
-              key={index}
+              key={item.id}
+              id={item.id}
               name={item.name}
-              priceEnterprise={item.priceEnterprise}
-              priceSalary={item.priceSalary}
+              salary={item.salary}
+              enterprisePrice={item.enterprisePrice}
             />
-          ))}
-          <Button
-            className='col-span-full w-full border-2 border-amber-600 bg-white text-amber-600 cursor-pointer'
-          >Adicionar Cliente
+          ))
+        )}
+        {!isLoading && clients.length > 0 && (
+          <Button className="col-span-full w-full border-2 border-amber-600 bg-white text-amber-600 cursor-pointer">
+            Adicionar Cliente
           </Button>
-        </main>
+        )}
+      </main>
+      {!isLoading && clients.length > 0 && (
         <Pagination>
           <PaginationContent>
             <PaginationItem>
               <PaginationPrevious
-                onClick={() =>
-                  currentPage > 1 && handlePageChange(currentPage - 1)
-                }
+                onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
               />
             </PaginationItem>
             {[...Array(totalPages)].map((_, index) => (
               <PaginationItem key={index}>
-                <PaginationLink
-                  onClick={() => handlePageChange(index + 1)}
-                >
+                <PaginationLink onClick={() => handlePageChange(index + 1)}>
                   {index + 1}
                 </PaginationLink>
               </PaginationItem>
             ))}
             <PaginationItem>
               <PaginationNext
-                onClick={() =>
-                  currentPage < totalPages && handlePageChange(currentPage + 1)
-                }
+                onClick={() => currentPage < totalPages && handlePageChange(currentPage + 1)}
               />
             </PaginationItem>
           </PaginationContent>
         </Pagination>
-      </div>
-    </>
+      )}
+    </div>
   );
 }

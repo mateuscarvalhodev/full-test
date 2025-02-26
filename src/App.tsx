@@ -34,7 +34,7 @@ function App() {
           </form>
         </div>
       </div>
-      <ClientCard name='mateus carvalho rodrigues' priceEnterprise={120000} priceSalary={3500} />
+      <ClientCard name='mateus carvalho rodrigues' priceEnterprise={120000} salary={3500} />
     </>
   )
 }

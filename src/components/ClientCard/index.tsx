@@ -4,9 +4,10 @@ import { Pencil, Plus, Trash2, Minus } from 'lucide-react';
 import { Button } from '../ui/button';
 
 export default function ClientCard({
+  id,
   name,
-  priceSalary,
-  priceEnterprise,
+  salary: priceSalary,
+  enterprisePrice,
   onAdd,
   onEdit,
   onDelete,
@@ -27,7 +28,7 @@ export default function ClientCard({
       </CardHeader>
       <CardContent className='text-center'>
         <p>Salário: {formatCurrency(priceSalary)}</p>
-        <p>Empresa: {formatCurrency(priceEnterprise)}</p>
+        <p>Empresa: {formatCurrency(enterprisePrice)}</p>
       </CardContent>
 
       <CardFooter className='w-full flex items-center justify-between px-2'>

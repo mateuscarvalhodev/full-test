@@ -1,7 +1,8 @@
 export type TClientCards = {
+  id: number;
   name: string;
-  priceEnterprise: number;
-  priceSalary: number;
+  enterprisePrice: number;
+  salary: number;
   onAdd?: () => void;
   onEdit?: () => void;
   onDelete?: () => void;

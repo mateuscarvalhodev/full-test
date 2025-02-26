@@ -25,7 +25,7 @@ export default function SelectedClients() {
               key={index}
               name={client.name}
               priceEnterprise={client.priceEnterprise}
-              priceSalary={client.priceSalary}
+              salary={client.priceSalary}
               variant='selected'
               onDelete={() => handleRemoveClient(client)}
             />
