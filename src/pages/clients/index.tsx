@@ -12,6 +12,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { getClients } from '@/api/getClients';
 import { TClientCards } from '@/types/TClientCard';
+import { deleteClient } from '@/api/deleteClients';
 
 export default function Clients() {
   const [clients, setClients] = useState<TClientCards[]>([]);
@@ -33,7 +34,15 @@ export default function Clients() {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
-
+  const handleDelete = (clientId: number) => {
+    deleteClient(clientId)
+      .then(() => {
+        console.log(`cliente ${clientId} deletado com sucesso.`);
+      })
+      .catch((error) => {
+        console.error('erro ao deletar o cliente: ', error)
+      })
+  }
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
@@ -54,6 +63,7 @@ export default function Clients() {
               name={item.name}
               salary={item.salary}
               enterprisePrice={item.enterprisePrice}
+              onDelete={() => handleDelete(item.id)}
             />
           ))
         )}
