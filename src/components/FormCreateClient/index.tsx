@@ -21,6 +21,7 @@ import {
   DialogTrigger
 } from '../ui/dialog';
 import { createClient } from '@/api/createClients';
+import { toast } from 'sonner';
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -53,6 +54,7 @@ export default function FormCreateClient() {
       };
       const createdClient = await createClient(newClient);
       console.log('Cliente criado com sucesso:', createdClient);
+      toast('Cliente criado com sucesso.',)
       form.reset();
     } catch (error) {
       console.error('Erro ao criar cliente:', error);

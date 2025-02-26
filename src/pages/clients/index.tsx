@@ -14,6 +14,7 @@ import { getClients } from '@/api/getClients';
 import { TClientCards } from '@/types/TClientCard';
 import { deleteClient } from '@/api/deleteClients';
 import FormCreateClient from '@/components/FormCreateClient';
+import { toast } from 'sonner';
 
 export default function Clients() {
   const [clients, setClients] = useState<TClientCards[]>([]);
@@ -39,6 +40,7 @@ export default function Clients() {
     deleteClient(clientId)
       .then(() => {
         console.log(`cliente ${clientId} deletado com sucesso.`);
+        toast('Usuário deletado com sucesso.',)
       })
       .catch((error) => {
         console.error('erro ao deletar o cliente: ', error)
@@ -49,9 +51,9 @@ export default function Clients() {
   };
 
   return (
-    <div className="bg-slate-50 h-screen">
+    <div className='bg-slate-50 h-screen'>
       <Header />
-      <main className="w-screen mt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-16">
+      <main className='w-screen mt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-16'>
         {isLoading ? (
           <p>Carregando...</p>
         ) : clients.length === 0 ? (
@@ -69,7 +71,7 @@ export default function Clients() {
           ))
         )}
 
-        {/* <Button className="col-span-full w-full border-2 border-amber-600 bg-white text-amber-600 cursor-pointer">
+        {/* <Button className='col-span-full w-full border-2 border-amber-600 bg-white text-amber-600 cursor-pointer'>
             Adicionar Cliente
           </Button> */}
         <FormCreateClient />
