@@ -4,7 +4,6 @@ import { Pencil, Plus, Trash2, Minus } from 'lucide-react';
 import { Button } from '../ui/button';
 
 export default function ClientCard({
-  id,
   name,
   salary: priceSalary,
   enterprisePrice,
