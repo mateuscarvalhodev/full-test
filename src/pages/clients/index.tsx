@@ -10,6 +10,7 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination';
 import { Button } from '@/components/ui/button';
+import { getClientes } from '@/api/getClients';
 
 const cardsData = [
   { name: 'Mateus Carvalho Rodrigues', priceEnterprise: 120000, priceSalary: 3500 },
@@ -41,7 +42,7 @@ export default function Clients() {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
-
+  console.log(getClientes());
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
