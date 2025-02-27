@@ -41,7 +41,7 @@ export default function ClientCard({
         ) : (
           <>
             <Button
-              onClick={onAdd}
+              onClick={() => onAdd?.(clientData)}
               className='text-3xl font-bold text-dark bg-white cursor-pointer'
             >
               <Plus />

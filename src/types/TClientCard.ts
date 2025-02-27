@@ -7,7 +7,7 @@ export type Client = {
   isSelected: boolean
 }
 export type TClientCards = {
-  onAdd?: () => void;
+  onAdd?: (data: Client) => void;
   onEdit?: (data: Client) => void;
   onDelete?: () => void;
   onRemove?: () => void;

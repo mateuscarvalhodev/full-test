@@ -13,7 +13,7 @@ export default function SelectedClients() {
   ];
 
   function handleRemoveClient(client: TClientCards) {
-    console.log('Removendo cliente', client.name);
+    console.log('Removendo cliente', client.clientData);
   }
 
   return (

@@ -15,6 +15,7 @@ import FormClient from '@/components/FormClient';
 import { toast } from 'sonner';
 import { Client } from '@/types/TClientCard';
 import { Button } from '@/components/ui/button';
+import { patchClient } from '@/api/editUser';
 
 export default function Clients() {
   const [clients, setClients] = useState<Client[]>([]);
@@ -58,6 +59,19 @@ export default function Clients() {
         console.error('erro ao deletar o cliente: ', error);
       });
   };
+  function handleAdd(client: Client) {
+    const updatedClient = { ...client, isSelected: true };
+    patchClient(updatedClient)
+      .then((res) => {
+
+        setClients((prev) =>
+          prev.map((c) =>
+            c.id === res.id ? res : c
+          )
+        );
+      })
+      .catch((err) => console.error('Erro ao atualizar cliente:', err));
+  }
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -109,6 +123,7 @@ export default function Clients() {
               key={item.id}
               clientData={item}
               onDelete={() => handleDelete(item.id)}
+              onAdd={handleAdd}
               onEdit={handleEditClick}
             />
           ))
