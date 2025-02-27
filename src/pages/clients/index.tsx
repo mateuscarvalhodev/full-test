@@ -22,12 +22,19 @@ export default function Clients() {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    getClients()
-      .then((data: TClientCards[]) => {
-        setClients(data);
-      })
-      .catch((error) => console.error('Erro ao buscar clientes:', error))
-      .finally(() => setIsLoading(false));
+    const storedUserId = localStorage.getItem('userId');
+    if (storedUserId) {
+      const userId = Number(storedUserId);
+      getClients(userId)
+        .then((data: TClientCards[]) => {
+          setClients(data);
+        })
+        .catch((error) => console.error('Erro ao buscar clientes:', error))
+        .finally(() => setIsLoading(false));
+    } else {
+      console.error("userId não encontrado.");
+      setIsLoading(false);
+    }
   }, []);
 
   const totalPages = Math.ceil(clients.length / itemsPerPage);
