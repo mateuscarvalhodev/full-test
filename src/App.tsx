@@ -16,6 +16,7 @@ function App() {
       const user = await authenticateUser({ name });
       toast(`Bem-vindo, ${user.name}!`);
       localStorage.setItem('userId', (user.id));
+      localStorage.setItem('userName', user.name);
       navigate('/clients');
     } catch (error) {
       console.error('Erro ao autenticar usuário:', error);

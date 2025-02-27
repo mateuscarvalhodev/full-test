@@ -1,9 +1,17 @@
 import teddyLogo from '@/assets/logo.svg'
 import { SidebarTrigger } from '../ui/sidebar';
 import { NavLink } from 'react-router';
+import { useEffect, useState } from 'react';
 
 export default function Header() {
-  console.log(SidebarTrigger);
+  const [user, setUser] = useState<string>('');
+  useEffect(() => {
+    const storedName = localStorage.getItem('userName');
+    if (storedName) {
+      setUser(storedName);
+    }
+  }, []);
+
   return (
     <header className='fixed top-0 left-0 w-full bg-white z-10 flex items-center justify-around px-4 py-2 border-b'>
       <div className='flex items-center gap-4'>
@@ -42,7 +50,7 @@ export default function Header() {
         </a>
       </nav>
 
-      <div className='text-gray-700'>Olá, <span className='font-bold'>Usuário!</span></div>
+      <div className='text-gray-700'>Olá, <span className='font-bold capitalize'>{user}!</span></div>
     </header>
   )
 }
