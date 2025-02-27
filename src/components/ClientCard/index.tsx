@@ -2,6 +2,7 @@ import { TClientCards } from '@/types/TClientCard';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import { Pencil, Plus, Trash2, Minus } from 'lucide-react';
 import { Button } from '../ui/button';
+import AlertDialogConfirmation from '../AlertDialogConfirmation';
 
 export default function ClientCard({
   name,
@@ -52,15 +53,27 @@ export default function ClientCard({
             >
               <Pencil />
             </Button>
-            <Button
-              onClick={onDelete}
-              className='text-3xl font-bold text-red-500 bg-white hover:bg-white cursor-pointer'
+            <AlertDialogConfirmation
+              alertTitle="Excluir cliente:"
+              alertFinalMessage='Excluir cliente'
+              alertDescription={
+                <>
+                  Você está prestes a excluir o cliente: <span className="font-bold">{name}</span>.
+                </>
+              }
+              onConfirm={onDelete ?? (() => { })}
+
             >
-              <Trash2 />
-            </Button>
+              <Button
+                className='text-3xl font-bold text-red-500 bg-white hover:bg-white cursor-pointer'
+              >
+                <Trash2 />
+              </Button>
+            </AlertDialogConfirmation>
           </>
-        )}
-      </CardFooter>
-    </Card>
+        )
+        }
+      </CardFooter >
+    </Card >
   );
 }

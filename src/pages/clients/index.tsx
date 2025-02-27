@@ -9,7 +9,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
-// import { Button } from '@/components/ui/button';
 import { getClients } from '@/api/getClients';
 import { TClientCards } from '@/types/TClientCard';
 import { deleteClient } from '@/api/deleteClients';
@@ -71,7 +70,8 @@ export default function Clients() {
           ))
         )}
 
-        {/* <Button className='col-span-full w-full border-2 border-amber-600 bg-white text-amber-600 cursor-pointer'>
+
+        {/* <Button className='col-span-full w-full border-2 border-primary-orange bg-white text-primary-orange cursor-pointer'>
             Adicionar Cliente
           </Button> */}
         <FormCreateClient />

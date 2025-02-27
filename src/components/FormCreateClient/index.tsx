@@ -8,14 +8,12 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger
@@ -57,21 +55,20 @@ export default function FormCreateClient() {
       toast('Cliente criado com sucesso.',)
       form.reset();
     } catch (error) {
+      toast(`Erro ao criar cliente: ${error}`)
       console.error('Erro ao criar cliente:', error);
     }
   }
 
   return (
     <Dialog>
-      <DialogTrigger className='col-span-full w-full border-2 border-amber-600 bg-white text-amber-600 cursor-pointer rounded h-9'>
+      <DialogTrigger className='col-span-full w-full border-2 border-primary-orange bg-white text-primary-orange cursor-pointer rounded h-9'>
         Criar cliente
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle className='text-bold'>Criar cliente:</DialogTitle>
-          <DialogDescription>
-            Preencha os campos abaixo para criar um novo cliente.
-          </DialogDescription>
+
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
@@ -80,7 +77,7 @@ export default function FormCreateClient() {
               name='username'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+
                   <FormControl>
                     <Input placeholder='Digite o nome do cliente' {...field} />
                   </FormControl>
@@ -93,7 +90,6 @@ export default function FormCreateClient() {
               name='salary'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Salário</FormLabel>
                   <FormControl>
                     <Input type='number' placeholder='Digite o salário' {...field} />
                   </FormControl>
@@ -106,7 +102,6 @@ export default function FormCreateClient() {
               name='enterprisePrice'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Empresa</FormLabel>
                   <FormControl>
                     <Input type='number' placeholder='Digite o valor da empresa' {...field} />
                   </FormControl>
@@ -114,7 +109,7 @@ export default function FormCreateClient() {
                 </FormItem>
               )}
             />
-            <Button className='w-full bg-amber-600 hover:bg-amber-700' type='submit'>
+            <Button className='w-full bg-primary-orange hover:bg-amber-700' type='submit'>
               Criar cliente
             </Button>
           </form>

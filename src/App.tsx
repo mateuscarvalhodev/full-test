@@ -3,7 +3,6 @@ import { useState } from 'react';
 import './App.css'
 import { Button } from './components/ui/button';
 import { Input } from './components/ui/input';
-import ClientCard from './components/ClientCard';
 
 function App() {
   const [name, setName] = useState('');
@@ -23,18 +22,17 @@ function App() {
               placeholder='Digite o seu nome:'
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className='w-full p-2 border rounded mb-4 focus:outline-none focus:border-none focus:ring-2 focus:ring-orange-500'
+              className='w-full p-2 border rounded mb-4 focus:outline-none focus:border-none focus:ring-2 focus:ring-primary-orange'
             />
             <Button
               type='submit'
-              className='w-full xg text-white bg--primary-orange font-bold py-2 px-4 rounded transition'
+              className='w-full xg text-white bg-primary-orange hover:bg-primary-orange font-bold py-2 px-4 rounded transition cursor-pointer'
             >
               Entrar
             </Button>
           </form>
         </div>
       </div>
-      <ClientCard name='mateus carvalho rodrigues' priceEnterprise={120000} salary={3500} />
     </>
   )
 }

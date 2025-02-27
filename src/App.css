@@ -11,6 +11,9 @@
   /* text-align: center; */
 }
 
+@theme {
+  --color-primary-orange: #ec6724;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
