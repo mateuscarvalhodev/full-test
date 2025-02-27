@@ -20,6 +20,7 @@ import {
 } from '../ui/dialog';
 import { createClient } from '@/api/createClients';
 import { toast } from 'sonner';
+import { TNewClient } from '@/types/TClientCard';
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -45,7 +46,9 @@ export default function FormCreateClient() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const newClient = {
+      const userId = Number(localStorage.getItem('userId'));
+      const newClient: TNewClient = {
+        userId,
         name: values.username,
         salary: values.salary,
         enterprisePrice: values.enterprisePrice,

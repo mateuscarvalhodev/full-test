@@ -1,5 +1,6 @@
 export type TClientCards = {
   id: number;
+  userId: number;
   name: string;
   enterprisePrice: number;
   salary: number;

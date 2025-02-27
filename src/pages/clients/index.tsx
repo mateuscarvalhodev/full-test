@@ -67,6 +67,7 @@ export default function Clients() {
         ) : (
           currentItems.map((item) => (
             <ClientCard
+              userId={item.userId}
               key={item.id}
               id={item.id}
               name={item.name}
