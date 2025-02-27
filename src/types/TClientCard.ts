@@ -1,14 +1,18 @@
-export type TClientCards = {
+export type Client = {
   id: number;
   userId: number;
   name: string;
   enterprisePrice: number;
   salary: number;
+  isSelected: boolean
+}
+export type TClientCards = {
   onAdd?: () => void;
-  onEdit?: () => void;
+  onEdit?: (data: Client) => void;
   onDelete?: () => void;
   onRemove?: () => void;
+  clientData: Client
   variant?: 'default' | 'selected';
 };
 
-export type TNewClient = Omit<TClientCards, 'id'>;
+export type TNewClient = Omit<Client, 'id' | 'isSelected'>;

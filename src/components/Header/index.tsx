@@ -32,7 +32,7 @@ export default function Header() {
       <nav className='flex items-center gap-8'>
         <NavLink
           to='/clients'
-          className='transition-colors'
+          className='transition-colors text-primary-orange hover:text-primary-orange'
         >
           Clientes
         </NavLink>
@@ -42,12 +42,13 @@ export default function Header() {
         >
           Clientes selecionados
         </NavLink>
-        <a
-          href='#'
+        <NavLink
+          to='/'
+          onClick={() => localStorage.clear()}
           className='transition-colors'
         >
           Sair
-        </a>
+        </NavLink>
       </nav>
 
       <div className='text-gray-700'>Olá, <span className='font-bold capitalize'>{user}!</span></div>

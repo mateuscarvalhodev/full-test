@@ -5,14 +5,12 @@ import { Button } from '../ui/button';
 import AlertDialogConfirmation from '../AlertDialogConfirmation';
 
 export default function ClientCard({
-  name,
-  salary: priceSalary,
-  enterprisePrice,
   onAdd,
   onEdit,
   onDelete,
   onRemove,
   variant = 'default',
+  clientData
 }: TClientCards) {
   function formatCurrency(value: number) {
     return new Intl.NumberFormat('pt-BR', {
@@ -20,14 +18,15 @@ export default function ClientCard({
       currency: 'BRL',
     }).format(value);
   }
+  const { enterprisePrice, name, salary } = clientData
 
   return (
-    <Card className='max-w-[455px] flex flex-col items-center'>
+    <Card className='flex flex-col items-center'>
       <CardHeader className='text-center'>
         <CardTitle className='capitalize'>{name}</CardTitle>
       </CardHeader>
       <CardContent className='text-center'>
-        <p>Salário: {formatCurrency(priceSalary)}</p>
+        <p>Salário: {formatCurrency(salary)}</p>
         <p>Empresa: {formatCurrency(enterprisePrice)}</p>
       </CardContent>
 
@@ -47,18 +46,18 @@ export default function ClientCard({
             >
               <Plus />
             </Button>
-            <Button
-              onClick={onEdit}
+            {onEdit && <Button
+              onClick={() => onEdit(clientData)}
               className='text-3xl font-bold text-dark bg-white cursor-pointer'
             >
               <Pencil />
-            </Button>
+            </Button>}
             <AlertDialogConfirmation
-              alertTitle="Excluir cliente:"
+              alertTitle='Excluir cliente:'
               alertFinalMessage='Excluir cliente'
               alertDescription={
                 <>
-                  Você está prestes a excluir o cliente: <span className="font-bold">{name}</span>.
+                  Você está prestes a excluir o cliente: <span className='font-bold'>{name}</span>.
                 </>
               }
               onConfirm={onDelete ?? (() => { })}

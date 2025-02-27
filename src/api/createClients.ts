@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { TClientCards, TNewClient } from '@/types/TClientCard';
+import { Client, TNewClient } from '@/types/TClientCard';
 
-export async function createClient(newClient: TNewClient): Promise<TClientCards> {
+export async function createClient(newClient: TNewClient): Promise<Client> {
   try {
     const response = await axios.post('http://localhost:3000/clients', newClient);
     return response.data;

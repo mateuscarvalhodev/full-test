@@ -40,7 +40,7 @@ export default function AlertDialogConfirmation({
           <AlertDialogDescription>{alertDescription}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogAction className='w-full bg-primary-orange' onClick={onConfirm}>{alertFinalMessage}</AlertDialogAction>
+          <AlertDialogAction className='w-full bg-primary-orange hover:bg-primary-orange' onClick={onConfirm}>{alertFinalMessage}</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
