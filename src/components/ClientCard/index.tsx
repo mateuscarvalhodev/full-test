@@ -33,7 +33,7 @@ export default function ClientCard({
       <CardFooter className='w-full flex items-center justify-between px-2'>
         {variant === 'selected' ? (
           <Button
-            onClick={onRemove}
+            onClick={() => onRemove?.(clientData)}
             className='ml-auto text-3xl font-bold text-red-500 bg-white hover:bg-white cursor-pointer'
           >
             <Minus />

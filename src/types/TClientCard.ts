@@ -10,7 +10,7 @@ export type TClientCards = {
   onAdd?: (data: Client) => void;
   onEdit?: (data: Client) => void;
   onDelete?: () => void;
-  onRemove?: () => void;
+  onRemove?: (data: Client) => void;
   clientData: Client
   variant?: 'default' | 'selected';
 };
