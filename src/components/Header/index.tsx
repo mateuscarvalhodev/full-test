@@ -31,7 +31,7 @@ export default function Header() {
 
       <nav className='flex items-center gap-8'>
         <NavLink
-          to='/clients'
+          to='/clientes'
           className='transition-colors text-primary-orange hover:text-primary-orange'
         >
           Clientes

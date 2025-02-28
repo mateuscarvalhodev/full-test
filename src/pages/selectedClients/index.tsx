@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Header from '@/components/Header';
 import ClientCard from '@/components/ClientCard';
 import { getClients } from '@/api/getClients';
 import { Client } from '@/types/TClientCard';
@@ -45,8 +44,8 @@ export default function SelectedClients() {
 
   return (
     <>
-      <Header />
-      <main className='w-screen bg-slate-50 mt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-16'>
+      {/* <Header /> */}
+      <main className=' bg-slate-50 mt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-16'>
         {isLoading ? (
           <p>Carregando...</p>
         ) : selectedClients.length > 0 ? (

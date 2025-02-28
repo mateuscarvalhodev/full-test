@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Header from '@/components/Header';
 import ClientCard from '@/components/ClientCard';
 import {
   Pagination,
@@ -94,8 +93,7 @@ export default function Clients() {
   };
 
   return (
-    <div className='bg-slate-50 min-h-screen mt-24 border-2 w-screen'>
-      <Header />
+    <div className='flex flex-col bg-slate-50 mt-24 border-2 border-red-500'>
 
       <div className='flex justify-between items-center my-8 px-8'>
         <span>{clients.length} clientes encontrados</span>
