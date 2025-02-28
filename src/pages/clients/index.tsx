@@ -52,23 +52,24 @@ export default function Clients() {
   const handleDelete = (clientId: number) => {
     deleteClient(clientId)
       .then(() => {
-        console.log(`cliente ${clientId} deletado com sucesso.`);
+        setClients(prev => prev.filter(client => client.id !== clientId));
         toast('Usuário deletado com sucesso.');
       })
       .catch((error) => {
-        console.error('erro ao deletar o cliente: ', error);
+        console.error('Erro ao deletar o cliente:', error);
       });
   };
+
   function handleAdd(client: Client) {
     const updatedClient = { ...client, isSelected: true };
     patchClient(updatedClient)
       .then((res) => {
-
         setClients((prev) =>
           prev.map((c) =>
             c.id === res.id ? res : c
           )
         );
+        toast('Cliente selecionado com sucesso.');
       })
       .catch((err) => console.error('Erro ao atualizar cliente:', err));
   }
@@ -96,7 +97,7 @@ export default function Clients() {
     <div className='bg-slate-50 min-h-screen mt-24 border-2 w-screen'>
       <Header />
 
-      <div className='flex justify-between items-center my-8'>
+      <div className='flex justify-between items-center my-8 px-8'>
         <span>{clients.length} clientes encontrados</span>
         <div className='flex items-center gap-2'>
           <span>Clientes por página:</span>
@@ -112,7 +113,7 @@ export default function Clients() {
         </div>
       </div>
 
-      <main className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
+      <main className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 px-8 pt-4'>
         {isLoading ? (
           <p>Carregando...</p>
         ) : clients.length === 0 ? (
@@ -136,7 +137,18 @@ export default function Clients() {
           Adicionar Cliente
         </Button>
 
-        <FormClient open={open} setOpen={setOpen} client={clientToEdit} />
+        <FormClient
+          open={open}
+          setOpen={setOpen}
+          client={clientToEdit}
+          onSuccess={(updatedClient: Client) => {
+            if (clientToEdit) {
+              setClients(prev => prev.map(c => c.id === updatedClient.id ? updatedClient : c));
+            } else {
+              setClients(prev => [...prev, updatedClient]);
+            }
+          }}
+        />
       </main>
 
       {!isLoading && clients.length > 0 && (
