@@ -11,6 +11,10 @@ function App() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if (!name.trim()) {
+      toast('Por favor, digite seu nome.');
+      return;
+    }
     try {
       const user = await authenticateUser({ name });
       toast(`Bem-vindo, ${user.name}!`);
@@ -35,7 +39,7 @@ function App() {
             placeholder='Digite o seu nome:'
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className='w-full p-2 border rounded mb-4 focus:outline-none focus:border-none focus:ring-2 focus:ring-primary-orange'
+            className='w-full p-2 border bg-background-basic rounded mb-4 focus:outline-none focus:border-none focus:ring-2 focus:ring-primary-orange'
           />
           <Button
             type='submit'
