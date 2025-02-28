@@ -61,7 +61,8 @@ export default function SelectedClients() {
 
   return (
     <>
-      <main className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-16">
+      <span className='flex font-bold ml-8'>Clientes selecionados:</span>
+      <main className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 px-8 pt-4'>
         {isLoading ? (
           <p>Carregando...</p>
         ) : selectedClients.length > 0 ? (

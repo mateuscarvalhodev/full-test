@@ -8,7 +8,7 @@ export default function SidebarLayout() {
   return (
     <SidebarProvider defaultOpen={false}>
       <div className='flex flex-col items-start w-full'>
-        <div className='flex w-full h-32'>
+        <div className="flex w-full h-auto md:h-32">
           <Header />
           <AppSidebar />
         </div>

@@ -95,9 +95,9 @@ export default function Clients() {
   return (
     <div className='flex flex-col flex-1 w-full'>
 
-      <div className='flex justify-between items-center my-8 px-8'>
+      <div className='flex justify-between flex-col items-center my-8 px-8 text-sm md:flex-row'>
         <span>{clients.length} clientes encontrados</span>
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-2 text-sm'>
           <span>Clientes por página:</span>
           <select
             className='border p-1 rounded'
