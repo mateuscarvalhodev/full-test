@@ -93,7 +93,7 @@ export default function Clients() {
   };
 
   return (
-    <div className='flex flex-col flex-1 w-full'>
+    <div className='flex flex-col flex-1 w-full md:px-8 md:py-4'>
 
       <div className='flex justify-between flex-col items-center my-8 px-8 text-sm md:flex-row'>
         <span>{clients.length} clientes encontrados</span>

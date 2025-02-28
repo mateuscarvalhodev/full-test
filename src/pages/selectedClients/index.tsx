@@ -62,7 +62,7 @@ export default function SelectedClients() {
   return (
     <>
       <span className='flex font-bold ml-8'>Clientes selecionados:</span>
-      <main className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 px-8 pt-4'>
+      <main className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 px-8 pt-4 md:px-8 md:py-4'>
         {isLoading ? (
           <p>Carregando...</p>
         ) : selectedClients.length > 0 ? (
