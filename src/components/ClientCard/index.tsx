@@ -3,6 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card
 import { Pencil, Plus, Trash2, Minus } from 'lucide-react';
 import { Button } from '../ui/button';
 import AlertDialogConfirmation from '../AlertDialogConfirmation';
+import { toast } from 'sonner';
 
 export default function ClientCard({
   onAdd,
@@ -10,7 +11,7 @@ export default function ClientCard({
   onDelete,
   onRemove,
   variant = 'default',
-  clientData
+  clientData,
 }: TClientCards) {
   function formatCurrency(value: number) {
     return new Intl.NumberFormat('pt-BR', {
@@ -18,7 +19,7 @@ export default function ClientCard({
       currency: 'BRL',
     }).format(value);
   }
-  const { enterprisePrice, name, salary } = clientData
+  const { enterprisePrice, name, salary, isSelected } = clientData;
 
   return (
     <Card className='flex flex-col items-center'>
@@ -41,38 +42,43 @@ export default function ClientCard({
         ) : (
           <>
             <Button
-              onClick={() => onAdd?.(clientData)}
-              className='text-3xl font-bold text-dark bg-white cursor-pointer'
+              onClick={() => {
+                if (isSelected) {
+                  toast('Cliente já está selecionado.');
+                  return;
+                }
+                onAdd?.(clientData);
+              }}
+              className='text-3xl font-bold text-dark hover:bg-primary-orange hover:text-white bg-white cursor-pointer'
             >
               <Plus />
             </Button>
-            {onEdit && <Button
-              onClick={() => onEdit(clientData)}
-              className='text-3xl font-bold text-dark bg-white cursor-pointer'
-            >
-              <Pencil />
-            </Button>}
+            {onEdit && (
+              <Button
+                onClick={() => onEdit(clientData)}
+                className='text-3xl font-bold text-dark hover:bg-primary-orange hover:text-white bg-white cursor-pointer'
+              >
+                <Pencil />
+              </Button>
+            )}
             <AlertDialogConfirmation
               alertTitle='Excluir cliente:'
               alertFinalMessage='Excluir cliente'
               alertDescription={
                 <>
-                  Você está prestes a excluir o cliente: <span className='font-bold'>{name}</span>.
+                  Você está prestes a excluir o cliente:{' '}
+                  <span className='font-bold'>{name}</span>.
                 </>
               }
               onConfirm={onDelete ?? (() => { })}
-
             >
-              <Button
-                className='text-3xl font-bold text-red-500 bg-white hover:bg-white cursor-pointer'
-              >
+              <Button className='text-3xl font-bold text-red-500 bg-white hover:bg-red-100 cursor-pointer'>
                 <Trash2 />
               </Button>
             </AlertDialogConfirmation>
           </>
-        )
-        }
-      </CardFooter >
-    </Card >
+        )}
+      </CardFooter>
+    </Card>
   );
 }
