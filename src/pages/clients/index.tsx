@@ -93,7 +93,7 @@ export default function Clients() {
   };
 
   return (
-    <div className='flex flex-col bg-slate-50 mt-24 border-2 border-red-500'>
+    <div className='flex flex-col flex-1 w-full bg-slate-50 mt-2 border-2 border-red-500'>
 
       <div className='flex justify-between items-center my-8 px-8'>
         <span>{clients.length} clientes encontrados</span>

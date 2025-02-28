@@ -24,7 +24,7 @@ function App() {
   };
 
   return (
-    <div className='flex items-center justify-center h-screen bg-green-500'>
+    <div className='flex items-center justify-center h-screen'>
       <div className='rounded-lg w-96'>
         <h2 className='text-2xl font-semibold text-center mb-4'>
           Olá, seja bem-vindo!

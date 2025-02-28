@@ -12,7 +12,7 @@ import { UseFormReturn, FieldValues, Path } from 'react-hook-form';
 type MoneyInputProps<T extends FieldValues> = {
   form: UseFormReturn<T>;
   name: Path<T>;
-  label: string;
+  label?: string;
   placeholder: string;
 };
 

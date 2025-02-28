@@ -24,7 +24,7 @@ const items = [
   },
   {
     title: 'Clientes',
-    url: '/clients',
+    url: '/clientes',
     icon: clientIcon,
   },
   {

@@ -98,19 +98,19 @@ export default function FormClient({ client, onSuccess, open, setOpen }: FormCli
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="font-bold">
+          <DialogTitle className='font-bold'>
             {client ? 'Editar cliente' : 'Criar cliente'}
           </DialogTitle>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
             <FormField
               control={form.control}
-              name="username"
+              name='username'
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Digite o nome do cliente" {...field} />
+                    <Input placeholder='Digite o nome do cliente' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -119,18 +119,16 @@ export default function FormClient({ client, onSuccess, open, setOpen }: FormCli
 
             <MoneyInput
               form={form}
-              name="salary"
-              label="Salário"
-              placeholder="Digite o salário"
+              name='salary'
+              placeholder='Digite o salário'
             />
             <MoneyInput
               form={form}
-              name="enterprisePrice"
-              label="Valor da empresa"
-              placeholder="Digite o valor da empresa"
+              name='enterprisePrice'
+              placeholder='Digite o valor da empresa'
             />
 
-            <Button className="w-full bg-primary-orange hover:bg-amber-700" type="submit">
+            <Button className='w-full bg-primary-orange hover:bg-amber-700' type='submit'>
               {client ? 'Atualizar cliente' : 'Criar cliente'}
             </Button>
           </form>

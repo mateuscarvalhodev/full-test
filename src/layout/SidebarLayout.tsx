@@ -7,10 +7,12 @@ import Header from '@/components/Header';
 export default function SidebarLayout() {
   return (
     <SidebarProvider defaultOpen={false}>
-      <div className='flex min-h-screen'>
-        <Header />
-        <AppSidebar />
-        <main className='flex-1 p-4'>
+      <div className='flex flex-col items-start w-full'>
+        <div className='flex w-full h-32'>
+          <Header />
+          <AppSidebar />
+        </div>
+        <main className='flex-1 w-full p-4'>
           <Outlet />
         </main>
       </div>
