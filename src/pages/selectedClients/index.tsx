@@ -61,7 +61,7 @@ export default function SelectedClients() {
 
   return (
     <>
-      <main className="w-full bg-slate-50 mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-16">
+      <main className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-16">
         {isLoading ? (
           <p>Carregando...</p>
         ) : selectedClients.length > 0 ? (
@@ -79,13 +79,13 @@ export default function SelectedClients() {
           </p>
         )}
 
+        <Button
+          onClick={handleClearSelected}
+          className="col-span-full w-full border-2 border-primary-orange hover:bg-background-basic bg-background-basic text-primary-orange cursor-pointer"
+        >
+          Limpar clientes selecionados
+        </Button>
       </main>
-      <Button
-        onClick={handleClearSelected}
-        className="col-span-full w-full border-2 border-primary-orange hover:bg-white bg-white text-primary-orange cursor-pointer"
-      >
-        Limpar clientes selecionados
-      </Button>
     </>
   );
 }

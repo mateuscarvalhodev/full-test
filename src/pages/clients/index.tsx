@@ -93,7 +93,7 @@ export default function Clients() {
   };
 
   return (
-    <div className='flex flex-col flex-1 w-full bg-slate-50 mt-2 border-2 border-red-500'>
+    <div className='flex flex-col flex-1 w-full'>
 
       <div className='flex justify-between items-center my-8 px-8'>
         <span>{clients.length} clientes encontrados</span>
@@ -130,7 +130,7 @@ export default function Clients() {
 
         <Button
           onClick={handleNewClientClick}
-          className='col-span-full w-full border-2 border-primary-orange hover:bg-white bg-white text-primary-orange cursor-pointer'
+          className='col-span-full w-full border-2 border-primary-orange hover:bg-background-basic bg-background-basic text-primary-orange cursor-pointer'
         >
           Adicionar Cliente
         </Button>
