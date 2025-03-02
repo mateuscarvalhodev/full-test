@@ -59,6 +59,7 @@ function PaginationLink({
           size,
 
         }),
+        isActive && "bg-primary-orange text-white hover:bg-primary-orange",
         className
       )}
       {...props}

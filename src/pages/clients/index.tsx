@@ -160,7 +160,9 @@ export default function Clients() {
             </PaginationItem>
             {[...Array(totalPages)].map((_, index) => (
               <PaginationItem key={index}>
-                <PaginationLink onClick={() => handlePageChange(index + 1)}>
+                <PaginationLink
+                  isActive={index + 1 === currentPage}
+                  onClick={() => handlePageChange(index + 1)}>
                   {index + 1}
                 </PaginationLink>
               </PaginationItem>
