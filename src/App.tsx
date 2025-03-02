@@ -38,7 +38,11 @@ function App() {
             type='text'
             placeholder='Digite o seu nome:'
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) =>
+              setName(
+                e.target.value.replace(/\b\w/g, (char) => char.toUpperCase())
+              )
+            }
             className='w-full p-2 border bg-background-basic rounded mb-4 focus:outline-none focus:border-none focus:ring-2 focus:ring-primary-orange'
           />
           <Button

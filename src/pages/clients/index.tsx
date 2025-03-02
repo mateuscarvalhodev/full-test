@@ -95,8 +95,8 @@ export default function Clients() {
   return (
     <div className='flex flex-col flex-1 w-full md:px-8 md:py-4'>
 
-      <div className='flex justify-between flex-col items-center my-8 px-8 text-sm md:flex-row'>
-        <span>{clients.length} clientes encontrados</span>
+      <div className='flex justify-between flex-col items-center  px-8 text-sm md:flex-row'>
+        <span className='md:text-lg'><span className='font-bold'>{clients.length}</span> clientes encontrados</span>
         <div className='flex items-center gap-2 text-sm'>
           <span>Clientes por página:</span>
           <select
@@ -104,6 +104,7 @@ export default function Clients() {
             value={itemsPerPage}
             onChange={handleItemsPerPageChange}
           >
+            <option value={3}>3</option>
             <option value={8}>8</option>
             <option value={16}>16</option>
             <option value={32}>32</option>
