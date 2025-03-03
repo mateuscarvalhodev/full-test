@@ -52,7 +52,7 @@ export function AppSidebar() {
             <SidebarMenu className='px-4 h-14 gap-4'>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild className='hover:text-primary-orange'>
                     <a href={item.url}>
                       <item.icon />
                       <span className='font-bold'>{item.title}</span>
