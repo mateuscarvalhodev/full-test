@@ -1,4 +1,4 @@
-https://full-test-1o23psk1b-mateuscarvalhodevs-projects.vercel.app/
+full-test-rh.vercel.app
 
 Frontend - full-test:
 Este projeto é uma aplicação frontend construída com React, TypeScript e Vite que se conecta a um backend NestJS (Node.js) para gerenciar usuários e clientes.
@@ -44,11 +44,13 @@ Com Yarn:
 ```bash
 yarn install
 ```
+
 Ou com npm:
 
 ```bash
 npm install
 ```
+
 Rodando o Projeto
 Para iniciar o servidor de desenvolvimento:
 
@@ -57,11 +59,13 @@ Com Yarn:
 ```bash
 yarn dev
 ```
+
 Ou com npm:
 
 ```bash
 npm run dev
 ```
+
 O projeto será iniciado (http://localhost:5173).
 
 Build para Produção
@@ -72,20 +76,25 @@ Para gerar uma build otimizada para produção:
 ```bash
 yarn build
 ```
+
 ```bash
 npm run build
 
 ```
+
 Após a build, para visualizar a produção:
 Com Yarn:
 
 ```bash
 yarn preview
 ```
+
 Ou com npm:
+
 ```bash
 npm run preview
 ```
+
 ###Estrutura do Projeto
 src/:
 components/: Componentes reutilizáveis (ex.: Header, ClientCard, FormClient, MoneyInput, etc.).
